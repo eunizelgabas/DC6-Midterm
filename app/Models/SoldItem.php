@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class SoldItem extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function sales(){
+        return $this->belongsTo(Sales::class);
+    }
 }

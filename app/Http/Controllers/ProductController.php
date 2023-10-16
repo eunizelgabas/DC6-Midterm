@@ -13,4 +13,18 @@ class ProductController extends Controller
             'products' => $products
         ]);
     }
+
+    public function create(){
+        return inertia('Product/Create');
+    }
+
+    public function edit(Product $product){
+        return inertia('Product/Edit');
+    }
+
+    public function destroy(Product $product) {
+        $product->delete();
+
+        return redirect('/products')->with('message', 'Product successfully deleted');;
+    }
 }
