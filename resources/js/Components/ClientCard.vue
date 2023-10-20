@@ -6,14 +6,14 @@
     const props = defineProps({
         client: Object
     })
-    const toggleDarkMode = inject('isDarkMode');
+    const themeMode = inject('themeMode');
 
     function open(client) {
     router.visit('/clients/show/' + client.id)
 }
 </script>
 <template>
-    <div class="relative flex w-96 flex-col mt-3 mb-4 ml-4 rounded-xl bg-clip-border shadow-md" :class="[ toggleDarkMode ? 'bg-gray-800 text-white'  : 'bg-white' ]" >
+    <div class="relative flex w-96 flex-col mt-3 mb-4 ml-4 rounded-xl bg-clip-border shadow-md" :class="themeMode" >
         <div class="p-6 py-15" @click="open(client)">
             <div class="mb-2 flex items-center justify-between">
                 <p class="block font-sans text-base font-medium leading-relaxed text-blue-gray-900 antialiased">

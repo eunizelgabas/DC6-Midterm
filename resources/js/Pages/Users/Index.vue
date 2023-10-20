@@ -1,6 +1,7 @@
 <script setup>
     import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
     import { Head, Link, router, useForm } from '@inertiajs/vue3';
+import { inject } from 'vue';
 
     const props  = defineProps({
         users : Array,
@@ -18,7 +19,7 @@
     function edit(){
         router.visit('/clients/edit/' + props.users.id)
     }
-
+    const themeMode = inject('themeMode');
 </script>
 
 <template>
@@ -26,11 +27,11 @@
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Users List</h2>
+            <h2 class="font-semibold text-xl  leading-tight">Users List</h2>
         </template>
 
-        <div class="py-12">
-            <div class="flex justify-between ">
+        <div class="py-12" :class="themeMode">
+            <div class="flex justify-between">
                 <h1 class="text-3xl font-medium text-gray-700 "></h1>
                 <Link href="users/create"  as="button" class="btn-primary inline-flex items-center mr-20 px-2 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
                     Create User
@@ -40,21 +41,21 @@
                 <div class=" overflow-hidden  sm:rounded-lg">
                     <!-- component -->
                     <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
-                    <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
-                        <thead class="bg-gray-50">
+                    <table class="w-full border-collapse  text-left text-sm te">
+                        <thead class="">
                         <tr>
-                            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Id</th>
-                            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Name</th>
-                            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Email</th>
-                            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Action</th>
+                            <th scope="col" class="px-6 py-4 font-medium">Id</th>
+                            <th scope="col" class="px-6 py-4 font-medium">Name</th>
+                            <th scope="col" class="px-6 py-4 font-medium">Email</th>
+                            <th scope="col" class="px-6 py-4 font-medium">Action</th>
                         </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100 border-t border-gray-100" v-for="user in users" :key="user.id">
                         <tr class="hover:bg-gray-50">
-                            <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
+                            <th class="flex gap-3 px-6 py-4 font-normal ">
 
                             <div class="text-sm">
-                                <div class="font-medium text-gray-700">{{ user.id }}</div>
+                                <div class="font-medium ">{{ user.id }}</div>
 
                             </div>
                             </th>

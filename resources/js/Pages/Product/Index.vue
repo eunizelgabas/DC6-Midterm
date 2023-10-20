@@ -16,11 +16,9 @@
 
         // console.log(props.errors)
     }
-    // function edit(){
-    //     router.visit('/products/edit/' + props.products.id)
-    // }
 
-    const isDarkMode = inject('isDarkMode')
+
+    const themeMode = inject('themeMode');
 
 </script>
 
@@ -32,37 +30,42 @@
             <h2 class="font-semibold text-xl  leading-tight">Product List</h2>
         </template>
 
-        <div class="py-2" :class="[ isDarkMode ? 'bg-gray-800 text-white'  : 'bg-white' ]">
+        <div class="py-2" >
             <div class="flex justify-between">
                 <h1 class="text-3xl font-medium text-gray-700 "></h1>
                 <Link href="products/create"  as="button" class="btn-primary inline-flex items-center mr-20 px-2 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
                     Create Product</Link>
             </div>
-            <div class="max-w-7xl  mx-auto sm:px-6 lg:px-8">
-                <div class=" ">
-                    <!-- component -->
-                    <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
-                    <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
-                        <thead class="bg-gray-50">
+            <div class="max-w-7xl  mx-auto sm:px-6 lg:px-8" >
+                <!-- <ProductTable  /> -->
+                <div class=" " :class="themeMode" >
+
+                    <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5" >
+                    <table class="w-full border-collapse text-left text-sm " >
+                        <thead class="" >
                         <tr>
-                            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Brand</th>
-                            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Name</th>
-                            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Description</th>
-                            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Retail Price</th>
-                            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Stock Qty</th>
-                            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Category</th>
-                            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Action</th>
+                            <th scope="col" class="px-6 py-4 font-medium ">Thumbnail</th>
+                            <th scope="col" class="px-6 py-4 font-medium ">Brand</th>
+                            <th scope="col" class="px-6 py-4 font-medium ">Name</th>
+                            <th scope="col" class="px-6 py-4 font-medium ">Description</th>
+                            <th scope="col" class="px-6 py-4 font-medium ">Retail Price</th>
+                            <th scope="col" class="px-6 py-4 font-medium ">Stock Qty</th>
+                            <th scope="col" class="px-6 py-4 font-medium ">Category</th>
+                            <th scope="col" class="px-6 py-4 font-medium ">Action</th>
                         </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100 border-t border-gray-100" v-for="prod in products" :key="prod.id">
                         <tr class="hover:bg-gray-50">
-                            <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
+                            <th class="flex gap-3 px-6 py-4 font-normal ">
+                                <div class="relative h-10 w-10">
+                                    <img class="h-full w-full rounded-full object-cover object-center" :src="prod.thumbnail" alt="">
+                                </div>
+                            <!-- <div class="text-sm">
+                                <div class="font-medium">{{ prod.brand }}</div>
 
-                            <div class="text-sm">
-                                <div class="font-medium text-gray-700">{{ prod.brand }}</div>
-
-                            </div>
+                            </div> -->
                             </th>
+                            <td class="px-6 py-4">{{ prod.brand }}</td>
                             <td class="px-6 py-4">{{ prod.name }}</td>
                             <td class="px-6 py-4">{{ prod.description}}</td>
                             <td class="px-6 py-4">{{ prod.retail_price}}</td>

@@ -13,4 +13,8 @@ class SalesController extends Controller
             'sales'=>$sales
         ]);
     }
+
+    public function create(){
+        return inertia('Sales/Create');
+    }
 }

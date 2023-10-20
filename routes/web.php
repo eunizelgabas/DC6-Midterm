@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('/sales/create', [SalesController::class , 'create'])->name('sales.create')->middleware('can:record-payments');
     Route::middleware('can:make-sales')->group(function(){
         Route::get('/sales', [SalesController::class , 'index'])->name('sales');
         Route::get('/products', [ProductController::class , 'index'])->name('products');
